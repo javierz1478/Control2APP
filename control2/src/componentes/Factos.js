@@ -36,30 +36,6 @@ function Factos() {
       <header className="App-header">
         <h1>Factos</h1>
         <Link to="/">Volver</Link>
-        <table>
-          <thead>
-            <tr>
-              <th>Facto</th>
-              <th>Fecha Creación</th>
-              <th>Categorias</th>
-              <th>Like</th>
-            </tr>
-          </thead>
-          <tbody>
-            {jokes.map((joke, index) => (
-              <tr key={index}>
-                <td>{joke.value}</td>
-                <td>{formatDate(joke.created_at)}</td>
-                <td>{joke.categories.join(', ') || 'N/A'}</td>
-                <td>
-                  <button onClick={() => toggleFavorite(joke)} className="like-button">
-                    <FaHeart color={favoritos.some(fav => fav.id === joke.id) ? 'red' : 'white'} />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
         <button onClick={togglemostrarFavoritos} className="favoritos-button">
           {mostrarFavoritos ? 'Ocultar favoritos' : 'Ver mis favoritos'}
         </button>
@@ -86,6 +62,31 @@ function Factos() {
             </table>
           </div>
         )}
+        <table>
+          <thead>
+            <tr>
+              <th>Facto</th>
+              <th>Fecha Creación</th>
+              <th>Categorias</th>
+              <th>Like</th>
+            </tr>
+          </thead>
+          <tbody>
+            {jokes.map((joke, index) => (
+              <tr key={index}>
+                <td>{joke.value}</td>
+                <td>{formatDate(joke.created_at)}</td>
+                <td>{joke.categories.join(', ') || 'N/A'}</td>
+                <td>
+                  <button onClick={() => toggleFavorite(joke)} className="like-button">
+                    <FaHeart color={favoritos.some(fav => fav.id === joke.id) ? 'red' : 'white'} />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
       </header>
     </div>
   );
